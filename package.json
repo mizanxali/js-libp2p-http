@@ -2,7 +2,8 @@
   "name": "js-libp2p-http",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
     "test-request": "tsc && mocha ./dist/tests/Libp2pRequest.test.js",
@@ -10,8 +11,12 @@
     "test": "tsc && mocha ./dist/tests/Libp2pHttp.test.js",
     "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "libp2p",
+    "ipfs",
+    "p2p"
+  ],
+  "author": "Vaibhav Muchandi",
   "license": "ISC",
   "dependencies": {
     "@libp2p/interface-libp2p": "^3.2.0",
