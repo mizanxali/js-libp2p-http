@@ -65,7 +65,7 @@ await node.dial(multiaddr("HANDLER_NODE_MULTIADDR"));
 ```
 Send a request using the `send` method:
 ```
-const response = await libp2pHttpRequester.send(`libp2p://HANDLER_NODE_PEER_ID/your-protocol-endpoint`, { data: "Request data" });
+const response = await libp2pHttpRequester.get(`libp2p://HANDLER_NODE_PEER_ID/your-protocol-endpoint`, { data: "Request data" });
 ```
 ### **Examples**
 For a clearer explanation and practical demonstrations of various use cases, please check out the `examples` folder in the package/repository. It provides comprehensive examples to help you understand how to effectively use `js-libp2p-http`.
@@ -76,7 +76,7 @@ Always handle errors gracefully:
 
 ```javascript
 try {
-    const response = await libp2pHttpRequester.send(`libp2p://HANDLER_PEER_ID/your-protocol-endpoint`, "Your request data here");
+    const response = await libp2pHttpRequester.get(`libp2p://HANDLER_PEER_ID/your-protocol-endpoint`, "Your request data here");
     // Handle the response
 } catch (error) {
     console.error("Failed to send request:", error);

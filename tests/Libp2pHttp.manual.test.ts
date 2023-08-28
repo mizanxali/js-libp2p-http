@@ -22,7 +22,7 @@ const main = async () => {
     const requesterNode = await createNode()
     await requesterNode.dial(handlerNode.getMultiaddrs()[0])
     const requester = Libp2pHttp.init(requesterNode)
-    const response = await requester.send(`libp2p://${handlerNode.peerId.toString()}/test-handler`, "Hello")
+    const response = await requester.get(`libp2p://${handlerNode.peerId.toString()}/test-handler`, "Hello")
     console.log(response)
 }
 

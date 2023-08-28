@@ -37,7 +37,7 @@ describe('Libp2pHttp', function () {
 
         await delay(1000);
 
-        const response = await libp2pHttpRequester.send(`libp2p://${handlerNode.peerId.toString()}/test-handler`, testData);
+        const response = await libp2pHttpRequester.get(`libp2p://${handlerNode.peerId.toString()}/test-handler`, testData);
 
         // Assertions
         expect(response.status).to.equal('success');
@@ -53,14 +53,14 @@ describe('Libp2pHttp', function () {
 
         await delay(1000);
 
-        const response = await libp2pHttpRequester.send(`libp2p://${handlerNode.peerId.toString()}/non-json-handler`, testData);
+        const response = await libp2pHttpRequester.get(`libp2p://${handlerNode.peerId.toString()}/non-json-handler`, testData);
 
         expect(response.status).to.equal('success');
         expect(response.data).to.equal('This is not a JSON string.');
     });
 
     it('should return error for non-existent protocol', async () => {
-        const response = await libp2pHttpRequester.send(`libp2p://${handlerNode.peerId.toString()}/non-existent-handler`, "testData");
+        const response = await libp2pHttpRequester.get(`libp2p://${handlerNode.peerId.toString()}/non-existent-handler`, "testData");
 
         expect(response.status).to.equal('error');
         expect(response.error).to.contain('Failed to send request');
@@ -74,7 +74,7 @@ describe('Libp2pHttp', function () {
             return "Delayed Response";
         });
 
-        const response = await libp2pHttpRequester.send(`libp2p://${handlerNode.peerId.toString()}/delayed-handler`, testData);
+        const response = await libp2pHttpRequester.get(`libp2p://${handlerNode.peerId.toString()}/delayed-handler`, testData);
 
         expect(response.status).to.equal('success');
         expect(response.data).to.equal('Delayed Response');
@@ -88,14 +88,14 @@ describe('Libp2pHttp', function () {
             return "Received large data";
         });
 
-        const response = await libp2pHttpRequester.send(`libp2p://${handlerNode.peerId.toString()}/large-data-handler`, largeData);
+        const response = await libp2pHttpRequester.get(`libp2p://${handlerNode.peerId.toString()}/large-data-handler`, largeData);
 
         expect(response.status).to.equal('success');
         expect(response.data).to.equal('Received large data');
     });
 
     it('should handle malformed request string gracefully', async () => {
-        const response = await libp2pHttpRequester.send(`malformed_request`, "testData");
+        const response = await libp2pHttpRequester.get(`malformed_request`, "testData");
 
         expect(response.status).to.equal('error');
         expect(response.error).to.contain('Invalid request string');
@@ -109,7 +109,7 @@ describe('Libp2pHttp', function () {
             return "Received nested data";
         });
 
-        const response = await libp2pHttpRequester.send(`libp2p://${handlerNode.peerId.toString()}/nested-handler`, nestedData);
+        const response = await libp2pHttpRequester.get(`libp2p://${handlerNode.peerId.toString()}/nested-handler`, nestedData);
 
         expect(response.status).to.equal('success');
         expect(response.data).to.equal('Received nested data');
@@ -123,7 +123,7 @@ describe('Libp2pHttp', function () {
             return numberData;
         });
 
-        const response = await libp2pHttpRequester.send(`libp2p://${handlerNode.peerId.toString()}/number-handler`, "testData");
+        const response = await libp2pHttpRequester.get(`libp2p://${handlerNode.peerId.toString()}/number-handler`, "testData");
 
         expect(response.status).to.equal('success');
         expect(response.data).to.equal(String(numberData));
@@ -137,7 +137,7 @@ describe('Libp2pHttp', function () {
             return booleanData;
         });
 
-        const response = await libp2pHttpRequester.send(`libp2p://${handlerNode.peerId.toString()}/boolean-handler`, "testData");
+        const response = await libp2pHttpRequester.get(`libp2p://${handlerNode.peerId.toString()}/boolean-handler`, "testData");
 
         expect(response.status).to.equal('success');
         expect(response.data).to.equal(String(booleanData));
@@ -155,7 +155,7 @@ describe('Libp2pHttp', function () {
             return jsonObject;
         });
 
-        const response = await libp2pHttpRequester.send(`libp2p://${handlerNode.peerId.toString()}/json-handler`, "testData");
+        const response = await libp2pHttpRequester.get(`libp2p://${handlerNode.peerId.toString()}/json-handler`, "testData");
 
         expect(response.status).to.equal('success');
 

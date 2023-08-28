@@ -18,7 +18,7 @@ class Libp2pHttp {
         return libp2pHttp
     }
 
-    send = async (requestString: string, data: DataPayload): Promise<Libp2pResponse<string>> => {
+    get = async (requestString: string, data: DataPayload): Promise<Libp2pResponse<string>> => {
         let request: Libp2pRequest;
 
         try {

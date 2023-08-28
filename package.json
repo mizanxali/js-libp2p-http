@@ -1,10 +1,17 @@
 {
   "name": "js-libp2p-http",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vaibhavmuchandi/js-libp2p-http.git"
+  },
   "scripts": {
     "test-request": "tsc && mocha ./dist/tests/Libp2pRequest.test.js",
     "test-manual": "tsc && node ./dist/tests/Libp2pHttp.manual.test.js",

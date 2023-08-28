@@ -6,34 +6,34 @@ import { multiaddr } from '@multiformats/multiaddr';
     const requesterNode = await createNode();
     const libp2pHttpRequester = Libp2pHttp.init(requesterNode);
 
-    const handlerAddress = '/ip4/127.0.0.1/tcp/49775/ws/p2p/12D3KooWGX55JNJePqkcnuq36VmFVy5vXm4ZjRK9RkCibGzrZDAZ'; // Replace this with the actual address
+    const handlerAddress = '/ip4/127.0.0.1/tcp/50297/ws/p2p/12D3KooWEYWw4nxciXofvsZMDqAVqppguonoWThVfqMBTMwtSLaa'; // Replace this with the actual address
     await requesterNode.dial(multiaddr(handlerAddress));
 
     await delay(1000);
 
     let response;
 
-    response = await libp2pHttpRequester.send(`libp2p://12D3KooWGX55JNJePqkcnuq36VmFVy5vXm4ZjRK9RkCibGzrZDAZ/test-handler`, "Hello");
+    response = await libp2pHttpRequester.get(`libp2p://12D3KooWEYWw4nxciXofvsZMDqAVqppguonoWThVfqMBTMwtSLaa/test-handler`, "Hello");
     console.log("Received:", response.data);
 
-    response = await libp2pHttpRequester.send(`libp2p://12D3KooWGX55JNJePqkcnuq36VmFVy5vXm4ZjRK9RkCibGzrZDAZ/non-json-handler`, "Hello");
+    response = await libp2pHttpRequester.get(`libp2p://12D3KooWEYWw4nxciXofvsZMDqAVqppguonoWThVfqMBTMwtSLaa/non-json-handler`, "Hello");
     console.log("Received:", response.data);
 
-    response = await libp2pHttpRequester.send(`libp2p://12D3KooWGX55JNJePqkcnuq36VmFVy5vXm4ZjRK9RkCibGzrZDAZ/delayed-handler`, "Hello");
+    response = await libp2pHttpRequester.get(`libp2p://12D3KooWEYWw4nxciXofvsZMDqAVqppguonoWThVfqMBTMwtSLaa/delayed-handler`, "Hello");
     console.log("Received:", response.data);
 
-    response = await libp2pHttpRequester.send(`libp2p://12D3KooWGX55JNJePqkcnuq36VmFVy5vXm4ZjRK9RkCibGzrZDAZ/large-data-handler`, "X".repeat(1e6));
+    response = await libp2pHttpRequester.get(`libp2p://12D3KooWEYWw4nxciXofvsZMDqAVqppguonoWThVfqMBTMwtSLaa/large-data-handler`, "X".repeat(1e6));
     console.log("Received:", response.data);
 
-    response = await libp2pHttpRequester.send(`libp2p://12D3KooWGX55JNJePqkcnuq36VmFVy5vXm4ZjRK9RkCibGzrZDAZ/nested-handler`, { a: { b: { c: { d: "nested" } } } });
+    response = await libp2pHttpRequester.get(`libp2p://12D3KooWEYWw4nxciXofvsZMDqAVqppguonoWThVfqMBTMwtSLaa/nested-handler`, { a: { b: { c: { d: "nested" } } } });
     console.log("Received:", response.data);
 
-    response = await libp2pHttpRequester.send(`libp2p://12D3KooWGX55JNJePqkcnuq36VmFVy5vXm4ZjRK9RkCibGzrZDAZ/number-handler`, "Hello");
+    response = await libp2pHttpRequester.get(`libp2p://12D3KooWEYWw4nxciXofvsZMDqAVqppguonoWThVfqMBTMwtSLaa/number-handler`, "Hello");
     console.log("Received:", response.data);
 
-    response = await libp2pHttpRequester.send(`libp2p://12D3KooWGX55JNJePqkcnuq36VmFVy5vXm4ZjRK9RkCibGzrZDAZ/boolean-handler`, "Hello");
+    response = await libp2pHttpRequester.get(`libp2p://12D3KooWEYWw4nxciXofvsZMDqAVqppguonoWThVfqMBTMwtSLaa/boolean-handler`, "Hello");
     console.log("Received:", response.data);
 
-    response = await libp2pHttpRequester.send(`libp2p://12D3KooWGX55JNJePqkcnuq36VmFVy5vXm4ZjRK9RkCibGzrZDAZ/json-handler`, "Hello");
+    response = await libp2pHttpRequester.get(`libp2p://12D3KooWEYWw4nxciXofvsZMDqAVqppguonoWThVfqMBTMwtSLaa/json-handler`, "Hello");
     console.log("Received:", JSON.parse(response.data));
 })();
