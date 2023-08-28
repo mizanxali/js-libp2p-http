@@ -18,7 +18,7 @@ class Libp2pRequest {
         }
 
         const strTarget = match[1];
-        this.protocol = match[2] ? match[2].substring(1) : '';
+        this.protocol = match[2] || '';
 
         try {
             this.target = peerIdFromString(strTarget)

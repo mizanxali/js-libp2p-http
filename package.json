@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha ./dist/tests/Libp2pRequest.test.js",
+    "test-request": "tsc && mocha ./dist/tests/Libp2pRequest.test.js",
+    "test-manual": "tsc && node ./dist/tests/Libp2pHttp.manual.test.js",
+    "test": "tsc && mocha ./dist/tests/Libp2pHttp.test.js",
     "build": "tsc"
   },
   "keywords": [],

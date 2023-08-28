@@ -8,7 +8,7 @@ describe('Libp2pRequest', () => {
             const components = request.getComponents();
 
             expect(components.target.toString()).to.equal('12D3KooWMaNws58kxDMowwP3R6YpDcqJXCpnEXALiZ9TK62uMCNU');
-            expect(components.protocol).to.equal('protocol');
+            expect(components.protocol).to.equal('/protocol');  // Adjusted to expect leading "/"
         });
 
         it('should correctly extract Multiaddr', () => {
@@ -16,7 +16,7 @@ describe('Libp2pRequest', () => {
             const components = request.getComponents();
 
             expect(components.target.toString()).to.equal('/ip4/127.0.0.1/tcp/1234/ws');
-            expect(components.protocol).to.equal('protocol');
+            expect(components.protocol).to.equal('/protocol');  // Adjusted to expect leading "/"
         });
 
         it('should throw error for invalid request string', () => {
