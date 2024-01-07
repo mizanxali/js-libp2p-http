@@ -6,9 +6,9 @@ import { gossipsub } from "@chainsafe/libp2p-gossipsub";
 import { kadDHT } from "@libp2p/kad-dht";
 import { yamux } from "@chainsafe/libp2p-yamux";
 import { bootstrap } from "@libp2p/bootstrap";
-import { circuitRelayTransport } from "libp2p/circuit-relay";
-import { identifyService } from "libp2p/identify";
-import type { Libp2p } from "@libp2p/interface-libp2p";
+import { circuitRelayTransport } from "@libp2p/circuit-relay-v2";
+import { identify } from "@libp2p/identify";
+import type { Libp2p } from "libp2p";
 
 export const createNode = async (
 ): Promise<Libp2p> => {
@@ -26,7 +26,7 @@ export const createNode = async (
             connectionEncryption: [noise()],
             streamMuxers: [yamux(), mplex()],
             services: {
-                identify: identifyService(),
+                identify: identify(),
                 pubsub: gossipsub({ allowPublishToZeroPeers: true }),
                 dht: kadDHT({
                     // this is necessary because this node is not connected to the public network

@@ -1,4 +1,4 @@
-import { Libp2p } from '@libp2p/interface-libp2p';
+import { Libp2p } from 'libp2p';
 import Libp2pRequest from './utils/Libp2pRequest.js';
 import Libp2pResponse from './utils/Libp2pResponse.js';
 import { pipe } from 'it-pipe';
