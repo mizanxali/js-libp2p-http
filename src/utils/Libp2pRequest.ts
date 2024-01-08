@@ -1,4 +1,4 @@
-import { PeerId } from "@libp2p/interface-peer-id";
+import { PeerId } from "@libp2p/interface";
 import { Multiaddr, multiaddr } from "@multiformats/multiaddr";
 import { peerIdFromString } from "@libp2p/peer-id"
 

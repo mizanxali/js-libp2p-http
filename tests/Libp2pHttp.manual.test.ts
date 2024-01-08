@@ -1,4 +1,4 @@
-import type { Libp2p } from "@libp2p/interface-libp2p";
+import type { Libp2p } from "libp2p";
 import Libp2pHttp from "../src/Libp2pHttp.js";
 import { createNode, delay } from "./utils/utils.js"
 
