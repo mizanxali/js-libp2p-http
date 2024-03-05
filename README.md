@@ -1,9 +1,9 @@
 
-# `js-libp2p-http`
+# `js-libp2p-request-response`
 
 ## Introduction
 
-`js-libp2p-http` is a lightweight HTTP-like transport built on top of [libp2p](https://github.com/libp2p/js-libp2p). It allows you to send HTTP-like requests over libp2p, with easy handler registration and response handling.
+`js-libp2p-http` is a generic request response like transport interface built on top of [libp2p](https://github.com/libp2p/js-libp2p). It allows you to send HTTP-like requests over libp2p, with easy handler registration and response handling.
 ## Installation
 
 To install `js-libp2p-http`, choose your preferred package manager:
